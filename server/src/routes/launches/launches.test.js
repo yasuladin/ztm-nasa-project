@@ -1,10 +1,12 @@
 const request = require('supertest');
 const app = require('../../app');
 const { mongoConnect, mongoDisconnect } = require('../../services/mongo');
+const { loadPlanetData } = require('../../models/planets.model');
 
 describe('Launches API', () => {
   beforeAll(async () => {
     await mongoConnect();
+    await loadPlanetData();
   });
 
   afterAll(async () => {
@@ -41,7 +43,7 @@ describe('Launches API', () => {
       launchDate: 'zoot',
     };
 
-    test('Its should respond with 201 success', async () => {
+    test('It should respond with 201 success', async () => {
       const response = await request(app)
         .post('/v1/launches')
         .send(completeLaunchData)
