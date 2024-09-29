@@ -13,3 +13,6 @@ dist/
 .env.test.local
 .env.production.local
 .eslintcache
+
+aaa.jsx
+memo.md
